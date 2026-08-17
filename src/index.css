@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-50 text-ink-900 font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-ink-900;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-200 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-300;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60;
+  }
+
+  .glass-dark {
+    @apply bg-ink-900/70 backdrop-blur-xl border border-white/10;
+  }
+
+  .card-surface {
+    @apply bg-white border border-ink-100 rounded-2xl shadow-soft;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-ink-100 rounded-lg;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
+  }
+
+  .gradient-brand {
+    background-image: linear-gradient(135deg, #163e77 0%, #1668e0 55%, #2f86f6 100%);
+  }
+
+  .gradient-mesh {
+    background-image:
+      radial-gradient(at 18% 18%, rgba(47, 134, 246, 0.18) 0px, transparent 50%),
+      radial-gradient(at 82% 22%, rgba(249, 115, 22, 0.14) 0px, transparent 50%),
+      radial-gradient(at 50% 88%, rgba(16, 185, 129, 0.12) 0px, transparent 50%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    @apply shadow-float;
+  }
+}
